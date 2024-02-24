@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+$lightGray: #cfcfcf;
+$darkColor: #3d3061;
+$bodyText: "Nunito", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+body {
+  font-family: $bodyText !important;
+  background-color: $lightGray;
+}
+.content {
+  padding: 1em 2em;
+  background-color: #fff;
+}
