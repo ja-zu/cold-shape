@@ -8,45 +8,44 @@ import {
 } from "reactstrap";
 import EntriesCard from "../entries/list/EntriesCard";
 import { useState } from "react";
-import { selectYears } from "../entries/list/entrySlice";
+import { selectYears, selectEmotions } from "../entries/list/entrySlice";
 
 //Sets up filter
 export const FilterEntry = ({ entries }) => {
-   function handleEmotion(e) {
-      const emotion = e.target.name;
-      setFilter(emotion);
+   function handleSelection(e) {
+      const selection = e.target.name;
+      setFilter(selection);
    }
-   function handleYear(y) {
-      const year = y.target.name;
-      setFilter(year);
-   }
-
    const [filter, setFilter] = useState("all");
 
-   const filteredEmotions = entries.filter(
-      (entry) => entry.emotionTag === filter
-   );
-   const filteredDate = entries.filter((entry) => {
-      entry.date[3] === filter[3];
+   const filterEntry = entries.filter((entry) => entry.emotionTag === filter);
+   const filterYears = entries.filter((entry) => {
+      const year =
+         entry.date[0] + entry.date[1] + entry.date[2] + entry.date[3];
+      console.log(year);
+      return year === filter;
    });
 
-   const filteredEntries = [...filteredDate, ...filteredEmotions];
+   const filteredEntries = [...filterYears, ...filterEntry];
    console.log(filteredEntries);
 
    const [dropdownEmoOpen, setDropdownEmoOpen] = useState(false);
    const [dropdownYearOpen, setDropdownYearOpen] = useState(false);
 
-   const toggle = () => setDropdownEmoOpen((prevState) => !prevState);
-   const toggleYear = () => setDropdownYearOpen((prevState) => !prevState);
-   const years = selectYears(entries);
+   const toggle = (dropdown) => dropdown((prevState) => !prevState);
 
-   const dropYear = years.map((year) => {
-      return (
-         <DropdownItem name={year} onClick={handleYear}>
-            {year}
-         </DropdownItem>
-      );
-   });
+   const years = selectYears(entries);
+   const emotions = selectEmotions(entries);
+
+   const dropdownItems = (selection) =>
+      selection.map((item) => {
+         //adds data items availble to dropdown
+         return (
+            <DropdownItem name={item} onClick={handleSelection}>
+               {item}
+            </DropdownItem>
+         );
+      });
 
    return (
       <>
@@ -54,45 +53,34 @@ export const FilterEntry = ({ entries }) => {
             <Col>
                <Dropdown
                   isOpen={dropdownEmoOpen}
-                  toggle={toggle}
+                  toggle={() => toggle(setDropdownEmoOpen)}
                   direction="down"
                >
                   <DropdownToggle className="" caret>
                      Filter by Emotion
                   </DropdownToggle>
                   <DropdownMenu>
-                     <DropdownItem name="all" onClick={handleEmotion}>
+                     <DropdownItem name="all" onClick={handleSelection}>
                         All
                      </DropdownItem>
-                     <DropdownItem name="sad" onClick={handleEmotion}>
-                        Sad
-                     </DropdownItem>
-                     <DropdownItem name="frustrated" onClick={handleEmotion}>
-                        Frustrated
-                     </DropdownItem>
-                     <DropdownItem name="scared" onClick={handleEmotion}>
-                        Scared
-                     </DropdownItem>
-                     <DropdownItem name="angry" onClick={handleEmotion}>
-                        Angry
-                     </DropdownItem>
+                     {dropdownItems(emotions)}
                   </DropdownMenu>
                </Dropdown>
             </Col>
             <Col>
                <Dropdown
                   isOpen={dropdownYearOpen}
-                  toggle={toggleYear}
+                  toggle={() => toggle(setDropdownYearOpen)}
                   direction="down"
                >
                   <DropdownToggle className="" caret>
                      Filter by Year
                   </DropdownToggle>
                   <DropdownMenu>
-                     <DropdownItem name="all" onClick={handleEmotion}>
+                     <DropdownItem name="all" onClick={handleSelection}>
                         All
                      </DropdownItem>
-                     {dropYear}
+                     {dropdownItems(years)}
                   </DropdownMenu>
                </Dropdown>
             </Col>

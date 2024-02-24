@@ -63,3 +63,15 @@ export const selectYears = (entries) => {
    }, []);
    return years;
 };
+
+export const selectEmotions = (entries) => {
+   const emotions = entries.reduce((acc, val) => {
+      const emotion = val.emotionTag;
+      const dup = acc.some((dateM) => {
+         return dateM === emotion;
+      });
+      !dup && acc.push(emotion);
+      return acc;
+   }, []);
+   return emotions;
+};
