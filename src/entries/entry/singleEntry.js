@@ -1,17 +1,15 @@
-import { Container, Row, Button } from "reactstrap";
+import { Container, Row, Button, Col } from "reactstrap";
 import { selectEntryId } from "../list/entrySlice";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteEntry } from "../list/entrySlice";
+import EmotionImages from "../../features/EmotionImage";
 
 const SingleEntry = () => {
    const { id } = useParams();
    const entry = useSelector(selectEntryId(id));
-   const dispatch = useDispatch();
    const navigate = useNavigate();
    const submit = () => {
-      dispatch(deleteEntry(id));
-      navigate("/");
+      navigate("/status", { state: { id: id, message: "delete" } });
    };
    const { title, date, event, thought, emotion, emotionTag, altThought } =
       entry;
@@ -19,8 +17,13 @@ const SingleEntry = () => {
    return (
       <Container className="mt-2 singleEntry">
          <Row>
-            <h1>{title}</h1>
-            <p>{date}</p>
+            <Col className="col-8">
+               <h1>{title}</h1>
+               <p>{date}</p>
+            </Col>
+            <Col className="col-2">
+               <EmotionImages emotionTag={emotionTag} />
+            </Col>
          </Row>
          <Row>
             <h2>Event</h2>

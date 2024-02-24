@@ -1,5 +1,5 @@
 import { Container, Row, Col, Label, FormGroup, Button } from "reactstrap";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
    EntryAltThoughts,
    EntryEmotions,
@@ -40,9 +40,8 @@ const NewEntry = () => {
                if (!isSubmitting) {
                   setIsSubmitting(true);
                   dispatch(addEntry(values));
-                  console.log(values);
-                  await timer(5000);
-                  navigate("/");
+                  await timer(50);
+                  navigate("/status", { state: { message: "add" } });
                }
             }}
             validate={validateForm}
@@ -51,23 +50,22 @@ const NewEntry = () => {
                <FormGroup>
                   <Label>Title</Label>
                   <Field name="title" />
+                  <ErrorMessage name="title">
+                     {(msg) => <p className="text-danger">{msg}</p>}
+                  </ErrorMessage>
                </FormGroup>
                <FormGroup>
                   <Label>Date</Label>
                   <Field type="date" name="date" />
+                  <ErrorMessage name="date">
+                     {(msg) => <p className="text-danger">{msg}</p>}
+                  </ErrorMessage>
                </FormGroup>
                <EntryEvent />
                <EntryThoughts />
                <EntryEmotions />
                <EntryAltThoughts />
                <TagEmotion />
-               {isSubmitting ? (
-                  <p style={{ fontSize: "150%" }}>
-                     Your submission has been logged!
-                  </p>
-               ) : (
-                  <p></p>
-               )}
                <Row className="justify-content-center">
                   <Button className="justify-content-center" type="submit">
                      Log Entry

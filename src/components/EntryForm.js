@@ -1,5 +1,5 @@
 import { Container, Row, Button } from "reactstrap";
-import { Field } from "formik";
+import { Field, ErrorMessage } from "formik";
 import { useState } from "react";
 
 export const EntryEvent = () => {
@@ -19,6 +19,9 @@ export const EntryEvent = () => {
             placeholder="Events"
             className="form-control form-set"
          />
+         <ErrorMessage name="event">
+            {(msg) => <p className="text-danger">{msg}</p>}
+         </ErrorMessage>
       </Row>
    );
 };
@@ -40,6 +43,9 @@ export const EntryThoughts = () => {
             placeholder="Thoughts"
             className="form-control form-set"
          />
+         <ErrorMessage name="thought">
+            {(msg) => <p className="text-danger">{msg}</p>}
+         </ErrorMessage>
       </Row>
    );
 };
@@ -58,18 +64,13 @@ export const EntryEmotions = () => {
             placeholder="Emotions"
             className="form-control form-set"
          />
+         <ErrorMessage name="emotion">
+            {(msg) => <p className="text-danger">{msg}</p>}
+         </ErrorMessage>
       </Row>
    );
 };
 export const TagEmotion = () => {
-   const [addTag, addTagSet] = useState(false);
-   const addNewTag = () => {
-      !addTag ? (
-         <Field name="addTag">{console.log("addTag")}</Field>
-      ) : (
-         <p>{console.log("NotaddTag")}</p>
-      );
-   };
    return (
       <Row>
          <h2>Tag this entry with your primary mood</h2>
@@ -80,16 +81,10 @@ export const TagEmotion = () => {
                <option value="angry">Angry</option>
                <option value="frustrated">Frustrated</option>
                <option value="scared">Scared</option>
-               <option
-                  value="add"
-                  onClick={() => {
-                     addTagSet(true);
-                     addNewTag();
-                  }}
-               >
-                  Add another tag
-               </option>
             </Field>
+            <ErrorMessage name="emotionTag">
+               {(msg) => <p className="text-danger">{msg}</p>}
+            </ErrorMessage>
          </p>
       </Row>
    );
@@ -112,6 +107,9 @@ export const EntryAltThoughts = () => {
             placeholder="Alternate Thoughts"
             className="form-control form-set"
          />
+         <ErrorMessage name="altThought">
+            {(msg) => <p className="text-danger">{msg}</p>}
+         </ErrorMessage>
       </Row>
    );
 };

@@ -22,12 +22,10 @@ export const FilterEntry = ({ entries }) => {
    const filterYears = entries.filter((entry) => {
       const year =
          entry.date[0] + entry.date[1] + entry.date[2] + entry.date[3];
-      console.log(year);
       return year === filter;
    });
 
    const filteredEntries = [...filterYears, ...filterEntry];
-   console.log(filteredEntries);
 
    const [dropdownEmoOpen, setDropdownEmoOpen] = useState(false);
    const [dropdownYearOpen, setDropdownYearOpen] = useState(false);
