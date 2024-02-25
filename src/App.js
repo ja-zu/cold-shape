@@ -16,8 +16,11 @@ import {
 function App() {
    return (
       <>
+         <a className="skipLinks" href="#content">
+            Skip navigation
+         </a>
          <Header />
-         <div className="App">
+         <div className="App" id="content">
             <Container className="content">
                <Routes>
                   <Route path="/" element={<Home />} />

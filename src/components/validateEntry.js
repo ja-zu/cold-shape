@@ -1,25 +1,27 @@
 export const validateForm = (values) => {
+   const { event, date, title, thought, emotion, altThought, emotionTag } =
+      values;
    const errors = {};
-   if (!values.event) {
-      errors.field = "Do not leave blank";
+   if (!event) {
+      errors.event = "Do not leave blank";
    }
-   if (!values.date) {
-      errors.field = "Select a date";
+   if (!date) {
+      errors.date = "Select a date";
    }
-   if (!values.title) {
-      errors.field = "Input a title for your entry";
+   if (!title) {
+      errors.title = "Input a title for your entry";
    }
-   if (!values.thought) {
-      errors.field = "Put in your thoughts";
+   if (!thought) {
+      errors.thought = "Put in your thoughts";
    }
-   if (!values.emotion) {
-      errors.field = "Descbribe your feelings";
+   if (!emotion) {
+      errors.emotion = "Descbribe your feelings";
    }
-   if (!values.altThought) {
-      errors.field = "Think of an alternative thought to your situation";
+   if (!altThought) {
+      errors.altThought = "Think of an alternative thought to your situation";
    }
-   if (!values.emotionTag) {
-      errors.field = "Select a tag for your mood";
+   if (!emotionTag) {
+      errors.emotionTag = "Set a mood tag for your entry";
    }
    return errors;
 };

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Label, FormGroup, Button } from "reactstrap";
+import { Container, Row, Label, FormGroup, Button } from "reactstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
    EntryAltThoughts,
@@ -6,7 +6,6 @@ import {
    EntryEvent,
    EntryThoughts,
    TagEmotion,
-   UpdateEntries,
 } from "../components/EntryForm";
 import { useDispatch } from "react-redux";
 import { addEntry } from "../entries/list/entrySlice";
@@ -48,14 +47,14 @@ const NewEntry = () => {
          >
             <Form>
                <FormGroup>
-                  <Label>Title</Label>
+                  <Label htmlFor="title">Title</Label>
                   <Field name="title" />
                   <ErrorMessage name="title">
                      {(msg) => <p className="text-danger">{msg}</p>}
                   </ErrorMessage>
                </FormGroup>
                <FormGroup>
-                  <Label>Date</Label>
+                  <Label htmlFor="date">Date</Label>
                   <Field type="date" name="date" />
                   <ErrorMessage name="date">
                      {(msg) => <p className="text-danger">{msg}</p>}

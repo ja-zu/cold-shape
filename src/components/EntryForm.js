@@ -1,16 +1,13 @@
-import { Container, Row, Button } from "reactstrap";
+import { Row } from "reactstrap";
 import { Field, ErrorMessage } from "formik";
-import { useState } from "react";
 
 export const EntryEvent = () => {
    return (
       <Row>
          <h2>The initial situation</h2>
-         <label>
-            <p>
-               Write down the what happened to make you think negatively about
-               yourself or the situation.
-            </p>
+         <label htmlFor="event">
+            Write down the what happened to make you think negatively about
+            yourself or the situation.
          </label>
          <Field
             name="event"
@@ -30,11 +27,8 @@ export const EntryThoughts = () => {
    return (
       <Row>
          <h2>Your thoughts during this event</h2>
-         <label>
-            <p>
-               What negative and unhelpful thoughts did this event make you
-               feel?
-            </p>
+         <label htmlFor="thought">
+            What negative and unhelpful thoughts did this event make you feel?
          </label>
          <Field
             name="thought"
@@ -54,7 +48,7 @@ export const EntryEmotions = () => {
    return (
       <Row>
          <h2>What you felt</h2>
-         <label>
+         <label htmlFor="emotion">
             <p>What did your negative thoughts make you feel?</p>
          </label>
          <Field
@@ -74,18 +68,16 @@ export const TagEmotion = () => {
    return (
       <Row>
          <h2>Tag this entry with your primary mood</h2>
-         <p>
-            <Field as="select" name="emotionTag">
-               <option value={null}>Select an emotion</option>
-               <option value="sad">Sad</option>
-               <option value="angry">Angry</option>
-               <option value="frustrated">Frustrated</option>
-               <option value="scared">Scared</option>
-            </Field>
-            <ErrorMessage name="emotionTag">
-               {(msg) => <p className="text-danger">{msg}</p>}
-            </ErrorMessage>
-         </p>
+         <Field as="select" name="emotionTag">
+            <option value={null}>Select an emotion</option>
+            <option value="sad">Sad</option>
+            <option value="angry">Angry</option>
+            <option value="frustrated">Frustrated</option>
+            <option value="scared">Scared</option>
+         </Field>
+         <ErrorMessage name="emotionTag">
+            {(msg) => <p className="text-danger">{msg}</p>}
+         </ErrorMessage>
       </Row>
    );
 };
@@ -94,11 +86,9 @@ export const EntryAltThoughts = () => {
    return (
       <Row>
          <h2>The alternate thought</h2>
-         <label>
-            <p>
-               Think an alternative situation and evidence that contradicts your
-               initial negative thought.
-            </p>
+         <label htmlFor="altThought">
+            Think an alternative situation and evidence that contradicts your
+            initial negative thought.
          </label>
          <Field
             name="altThought"

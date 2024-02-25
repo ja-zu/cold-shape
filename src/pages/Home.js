@@ -1,8 +1,5 @@
 import { Container, Row, Button } from "reactstrap";
-import {
-   selectAllEntries,
-   selectLatestEntry,
-} from "../entries/list/entrySlice";
+import { selectLatestEntry } from "../entries/list/entrySlice";
 import EntriesCard from "../entries/list/EntriesCard";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
