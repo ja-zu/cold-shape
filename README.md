@@ -4,8 +4,8 @@ This app is my React portfolio project for my bootcamp. The app is a journal to 
 
 ## Screenshots
 
-![Screenshot of ThinkRec home screen](/public/assets/01.png | width=50)
-![Screenshot of ThinkRec entries screen](/public/assets/02.png | width=50)
+<img src="/public/assets/01.png" width="45%" alt="Screenshot of ThinkRec home screen">
+<img src="/public/assets/02.png" width="45%" alt="Screenshot of ThinkRec entries screen">
 
 ## Dependecies used
 
