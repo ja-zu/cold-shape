@@ -7,6 +7,9 @@ This app is my React portfolio project for my bootcamp. The app is a journal to 
 <img src="/public/assets/01.png" width="45%" alt="Screenshot of ThinkRec home screen">
 <img src="/public/assets/02.png" width="45%" alt="Screenshot of ThinkRec entries screen">
 
+![Screenshot of ThinkRec home screen](/public/assets/01.png){: style="width:45%"}
+![Screenshot of ThinkRec entries screen](/public/assets/02.png){: style="width: 45%"}
+
 ## Dependecies used
 
 -  React
