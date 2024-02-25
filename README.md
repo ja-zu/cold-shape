@@ -4,10 +4,13 @@ This app is my React portfolio project for my bootcamp. The app is a journal to 
 
 ## Screenshots
 
-<figure>
+### Home Screen
+
 <img src="/public/assets/01.png" width="45%" alt="Screenshot of ThinkRec home screen" style="display: inline-block">
+
+### Entries page
+
 <img src="/public/assets/02.png" width="45%" alt="Screenshot of ThinkRec entries screen" style="display: inline-block">
-</figure>
 
 ## Dependecies used
 
