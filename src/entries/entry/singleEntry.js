@@ -17,9 +17,9 @@ const SingleEntry = () => {
    return (
       <Container className="mt-2 singleEntry">
          <Row>
-            <Col className="col-8">
+            <Col className="col-10">
                <h1>{title}</h1>
-               <p>{date}</p>
+               <p className="mt-4">{date}</p>
             </Col>
             <Col className="col-2">
                <EmotionImages emotionTag={emotionTag} />

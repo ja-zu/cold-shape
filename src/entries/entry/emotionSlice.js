@@ -7,8 +7,13 @@ export const emotionsSlice = createSlice({
    },
    reducers: {
       addEmotion: (state, action) => {
-         state.entriesArray.push(action.payload);
-         console.log("Added emotion");
+         if (!state.emotionArray.includes(action.payload)) {
+            // Add the new emotion to the array
+            state.emotionArray.push(action.payload);
+            console.log("Added emotion");
+         } else {
+            console.log("Emotion already exists!");
+         }
       },
    },
 });
@@ -17,5 +22,5 @@ export const emotionsReducer = emotionsSlice.reducer;
 export const { addEmotion } = emotionsSlice.actions;
 
 export const selectAllEmotions = (state) => {
-   return state.emotions.emotionsArray;
+   return state.emotions.emotionArray;
 };
